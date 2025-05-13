@@ -33,12 +33,13 @@ Then run the build file as follows in terminal. `./dlxmain`.
 For more information on Sudoku Dancing Links, I wish you great adventures into this lovely paper. Even though it was fun to implement and learn a lot about Object Orientation & debugging, it still was a wild ride. 
 
 [Donald Knuth's DLX Paper](https://arxiv.org/abs/cs/0011047)
+
 [Exact Cover Problem](https://en.wikipedia.org/wiki/Exact_cover)
 
 ## Check out this! SudokuPyGame
 Also check out my sudoku pygame program built using python. This is where I first implemented the algorithm 
 
-![Sudoku Grid with Green numbers filled in](Sudokudlx/SudokuGrid.png)
+![Sudoku Grid with Green numbers filled in](SudokuGrid.png)
 
 [SudokuPyGame](https://github.com/lhalcomb/SudokuPyGame)
 
