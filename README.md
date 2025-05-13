@@ -24,7 +24,7 @@ You can compile using `g++`:
 ```bash
 g++ -std=c++17 -g -O0  -I ./headers ./src/sudokuHelper.cpp  ./src/IncidenceMatrix.cpp ./src/dlxSolver.cpp ./src/main.cpp  -o dlxmain
 ```
-This command is somewhat platform dependent. But should work on all clang/llvm compilers. For more info. refer to this [Website]((https://en.wikipedia.org/wiki/List_of_compilers#C++_compilers))
+This command is somewhat platform dependent. But should work on all clang/llvm compilers. For more info. refer to this  [Website](https://en.wikipedia.org/wiki/List_of_compilers#C++_compilers)
 
 Then run the build file as follows in terminal. `./dlxmain`. 
 
@@ -39,7 +39,7 @@ For more information on Sudoku Dancing Links, I wish you great adventures into t
 ## Check out this! SudokuPyGame
 Also check out my sudoku pygame program built using python. This is where I first implemented the algorithm 
 
-![Sudoku Grid with Green numbers filled in](SudokuGrid.png)
+<img src="SudokuGrid.png" alt="Sudoku Grid with Green numbers filled in" width="400"/>
 
 [SudokuPyGame](https://github.com/lhalcomb/SudokuPyGame)
 
