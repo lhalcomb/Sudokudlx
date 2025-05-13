@@ -37,7 +37,9 @@ For more information on Sudoku Dancing Links, I wish you great adventures into t
 
 ## Check out this! SudokuPyGame
 Also check out my sudoku pygame program built using python. This is where I first implemented the algorithm 
+
 ![Sudoku Grid with Green numbers filled in](Sudokudlx/SudokuGrid.png)
+
 [SudokuPyGame](https://github.com/lhalcomb/SudokuPyGame)
 
 
