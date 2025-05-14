@@ -15,5 +15,7 @@ class sudokuHelper{
         static void print_sudoku(const Matrix2D& grid); // Function to print the Sudoku grid
         static Matrix2D solved_grid(std::vector<int> solution); // Function to solve the Sudoku grid
         static Matrix2D convert_to_matrix(std::string &random_quiz, Matrix2D &grid); // Function to convert the quiz string to a matrix
+        static void print_ansi_grid(const Matrix2D& grid); // Function to print the Sudoku grid with ANSI movement
+        static void update_cell(int x, int y, int value); // Function to update a cell in the grid
 }; 
 

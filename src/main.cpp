@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <sudokuHelper.h>
+#include <unistd.h>
 
 
 std::vector<int> solve_sudoku_dlx(Matrix2D& grid){
@@ -17,27 +18,33 @@ std::vector<int> solve_sudoku_dlx(Matrix2D& grid){
 void solve_sudoku(){
     // Example Sudoku grid (0 represents empty cells)
     Matrix2D grid = sudokuHelper::load_sudoku("sudoku.csv"); // Load the Sudoku grid from a file
-    std::cout << "Original Sudoku grid:" << std::endl;
     sudokuHelper::print_sudoku(grid); // Print the original grid
 
     std::vector<int> solution = solve_sudoku_dlx(grid); // Solve the Sudoku puzzle
 
-    // Print the solution rows
-    std::cout << "Solution (last 9 rows): ";
-    for (int i = solution.size() -1; i >= solution.size() -9; --i){
-        std::cout << solution[i] << " ";
-    }
-    std::cout << std::endl;
 
     // Print the solved Sudoku grid
     Matrix2D solved_grid = sudokuHelper::solved_grid(solution); // Get the solved grid
     std::cout << "Solved Sudoku grid:" << std::endl;
     sudokuHelper::print_sudoku(solved_grid); // Print the solved grid
-    if (sudokuHelper::isValid(solved_grid)){
-        std::cout << "The solved Sudoku grid is valid." << std::endl; // Print if the solved grid is valid
-    } else {
-        std::cout << "The solved Sudoku grid is invalid." << std::endl; // Print if the solved grid is invalid
-    } // Validate the solved grid
+}
+
+void solve_sudoku_ansi(){
+    // Example Sudoku grid (0 represents empty cells)
+    Matrix2D grid = sudokuHelper::load_sudoku("sudoku.csv"); // Load the Sudoku grid from a file
+    sudokuHelper::print_ansi_grid(grid); // Print the original grid
+
+    std::vector<int> solution = solve_sudoku_dlx(grid); // Solve the Sudoku puzzle
+
+    // Print the solved Sudoku grid
+    Matrix2D solved_grid = sudokuHelper::solved_grid(solution); // Get the solved grid
+    std::cout << "Solved Sudoku grid:" << std::endl;
+    for (int i = 0; i < 81; ++i) {
+        int row = i / 9;
+        int col = i % 9;
+        usleep(1000); 
+        sudokuHelper::update_cell(row, col, solved_grid[row][col]); // Update the cell in the grid
+    }
 }
 
 void solve_all_grids() {
@@ -109,6 +116,7 @@ int main(){
     
     //solve_all_grids(); // Solve all Sudoku grids
     solve_sudoku(); // Solve a single Sudoku grid
+    //solve_sudoku_ansi(); // Solve a single Sudoku grid with ANSI movement
 
     return EXIT_SUCCESS;
 }

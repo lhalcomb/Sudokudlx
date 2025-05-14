@@ -1,8 +1,6 @@
 #include "sudokuHelper.h"
 #include "incidenceMatrix.h"
-
-
-  
+#include <unistd.h>
 
 using Matrix2D = std::vector<std::vector<int>>; // Define a 2D vector type for the incidence matrix
 
@@ -16,6 +14,32 @@ Matrix2D sudokuHelper::convert_to_matrix(std::string &random_quiz, Matrix2D &gri
         }
 
     return grid;
+}
+
+void move_cursor(int x, int y) {
+    std::cout << "\033[" << y << ";" << x << "H"; // Move the cursor to (x, y)
+}
+void sudokuHelper::update_cell(int row, int col, int value) {
+    int cursor_row = row + 1 + (row / 3);           // 1-based row + extra lines for '---'
+    int cursor_col = col * 2 + 1 + (col / 3 * 2);    // each number takes 2 spaces + '|' spacing
+    move_cursor(cursor_row, cursor_col); // Move the cursor to the cell position
+    std::cout << value; // Print the value in the cell
+}
+
+void sudokuHelper::print_ansi_grid(const Matrix2D &grid) {
+    std::cout << "\033[2J\033[1;1H"; // Clear the screen and move the cursor to the top left
+
+    for (int row = 0; row < 9; ++row){
+        if (row % 3 == 0 && row != 0) std::cout << "---------------------" << std::endl; 
+
+        for (int col = 0; col < 9; ++col){
+            if (col % 3 == 0 && col != 0) std::cout << "| "; 
+            char display = grid[row][col] == 0 ? '.' : ('0' + grid[row][col]);
+            std::cout << display << ' '; 
+        }
+        std::cout << std::endl; // New line after each row
+    }
+    std::cout.flush(); // Flush the output buffer
 }
 
 //using bitmasking
@@ -94,7 +118,6 @@ Matrix2D sudokuHelper::load_sudoku(const std::string &filename){
     }
     srand(static_cast<unsigned>(time(0))); // seed the random number generator
     std::string random_quiz = quizes[rand() % quizes.size()]; // get a random quiz
-    std::cout << "Random quiz: " << random_quiz << std::endl; // print the random quiz
     Matrix2D grid(9, std::vector<int>(9)); // create a 9x9 grid
     Matrix2D sudoku_grid = convert_to_matrix(random_quiz, grid); // convert the quiz to a matrix
 
@@ -127,3 +150,5 @@ void sudokuHelper::print_sudoku(const Matrix2D &grid) {
     }
 
 };
+
+
